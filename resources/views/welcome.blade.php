@@ -14,9 +14,17 @@
 </head>
 
 <body>
-    <div>
-        <h1>Welcome </h1>
-    </div>
+    <p>
+        <b>Message: </b> <span id="msgData"></span>
+    </p>
+
+    <script src="{{ asset('build/assets/app-C7yuJyHJ.js') }}"></script>
+    <script>
+        Echo.channel('chats').listen('WebSocketEvent', (e) => {
+            console.log(e);
+            document.getElementById('msgData').innerHTML = e.message;
+        })
+    </script>
 </body>
 
 </html>
